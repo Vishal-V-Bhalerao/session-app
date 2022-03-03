@@ -29,7 +29,18 @@ function SpeakerImage({ id, first, last }) {
     )
 }
 
-function SpeakerInfo({ first, last, bio, company, twitterHandle }) {
+function SpeakerFavorite({ favorite, updateFavorite }) {
+    return (
+        <div className="action padB1" >
+            <span onClick={updateFavorite} >
+                <i className={favorite === true ? 'fa fa-star orange' : 'fa fa-star-o orange'}></i>
+                {' '} Favorite
+            </span>
+        </div>
+    )
+}
+
+function SpeakerInfo({ first, last, bio, company, twitterHandle, favorite, updateFavorite }) {
     return (
         <div className='speaker-info' >
             <div className='d-flex justify-content-between mb-3'>
@@ -37,6 +48,7 @@ function SpeakerInfo({ first, last, bio, company, twitterHandle }) {
                     {first} {last}
                 </h3>
             </div>
+            <SpeakerFavorite favorite={favorite} updateFavorite={updateFavorite}></SpeakerFavorite>
             <div>
                 <p className="card-description">{bio}</p>
                 <div className="social d-flex flex-row mt-4" >
@@ -54,14 +66,14 @@ function SpeakerInfo({ first, last, bio, company, twitterHandle }) {
     )
 }
 
-function Speaker({ speaker, showSessions }) {
+function Speaker({ speaker, showSessions, updateFavorite }) {
     const { id, first, last, sessions } = speaker;
     // card-height
     return (
         <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
             <div className='card  p-4 mt-4' >
                 <SpeakerImage id={id} first={first} last={last}></SpeakerImage>
-                <SpeakerInfo {...speaker}></SpeakerInfo>
+                <SpeakerInfo {...speaker} updateFavorite={updateFavorite}></SpeakerInfo>
                 {showSessions ? <SessionList sessions={sessions} ></SessionList> : null}
             </div>
         </div>
