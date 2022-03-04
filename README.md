@@ -3,6 +3,6 @@
 3. create component with single responsibility
 
 Commit number 2 -
-learned:
+learned: Event bubbling from child to prop
 1. prop chaining
 2. passing set state functions to children so they can update the state
