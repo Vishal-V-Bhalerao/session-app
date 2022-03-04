@@ -6,3 +6,8 @@ Commit number 2 -
 learned: Event bubbling from child to prop
 1. prop chaining
 2. passing set state functions to children so they can update the state
+
+Commit number 2 -
+learned: async calling using useEffect
+1. useEffect
+2. use of async await and promise to mock delay in data
