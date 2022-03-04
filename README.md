@@ -7,7 +7,12 @@ learned: Event bubbling from child to prop
 1. prop chaining
 2. passing set state functions to children so they can update the state
 
-Commit number 2 -
+Commit number 3 -
 learned: async calling using useEffect
 1. useEffect
 2. use of async await and promise to mock delay in data
+
+Commit number 4 -
+learned: Handling loading and error
+1. handled loading and error by creating their flag states
+2. added react-placeholder lib to show loading screen
