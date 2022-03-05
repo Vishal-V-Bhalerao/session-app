@@ -1,9 +1,17 @@
 import { data } from '../../SpeakerData'
 import { useEffect, useState } from 'react'
+
+export const REQUEST_STATUS = {
+    LOADING: 'loading',
+    SUCCESS: 'success',
+    FAILURE: 'failure'
+}
+
 export default function useRequestSpeakers() {
     const [speakerData, setSpeakerData] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [isError, setIsError] = useState(false)
+    // const [isLoading, setIsLoading] = useState(true)
+    // const [isError, setIsError] = useState(false)
+    const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING)
     const [error, setError] = useState('')
     /**
      * @param {number} ms 
@@ -19,14 +27,11 @@ export default function useRequestSpeakers() {
         async function getSpeakerData() {
             await delay(2000)
             try {
-                setIsLoading(false)
-                // throw 'Internal server error'
-                setIsError(false)
+                setRequestStatus(REQUEST_STATUS.SUCCESS)
                 setSpeakerData(data)
             }
             catch (e) {
-                setIsLoading(false)
-                setIsError(true)
+                setRequestStatus(REQUEST_STATUS.FAILURE)
                 setError(e)
             }
         }
@@ -47,5 +52,5 @@ export default function useRequestSpeakers() {
         setSpeakerData(tSpeakerData)
     }
 
-    return { speakerData, isLoading, isError, error, updateFavorite }
+    return { speakerData, requestStatus, error, updateFavorite }
 }

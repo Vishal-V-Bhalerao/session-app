@@ -16,3 +16,7 @@ Commit number 4 -
 learned: Handling loading and error
 1. handled loading and error by creating their flag states
 2. added react-placeholder lib to show loading screen
+
+Commit number 5 -
+learned: separating state related logic in speakersList component to custom hook useRequestSpeaker
+1. created custom hook which is normal function which starts with 'use'and returns states and other functions
