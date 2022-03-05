@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 function Session({ title, room }) {
     return (
         <span className='session w-100'>
@@ -30,11 +32,19 @@ function SpeakerImage({ id, first, last }) {
 }
 
 function SpeakerFavorite({ favorite, updateFavorite }) {
+    const [inTransition, setInTransition] = useState(false)
+    const donCallBack = () => {
+        setInTransition(false)
+    }
     return (
         <div className="action padB1" >
-            <span onClick={updateFavorite} >
+            <span onClick={() => {
+                setInTransition(true)
+                updateFavorite(donCallBack)
+            }} >
                 <i className={favorite === true ? 'fa fa-star orange' : 'fa fa-star-o orange'}></i>
-                {' '} Favorite
+                {' '} Favorite {' '}
+                {inTransition ? <span className="fas fa-circle-notch fa-spin" ></span> : null}
             </span>
         </div>
     )

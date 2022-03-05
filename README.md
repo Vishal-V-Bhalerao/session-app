@@ -1,3 +1,4 @@
+Commit number 1 -
 1. if two siblings need common state instead of putting it to the root compo, create new parent compo for them and add state to it
 2. keep state as close as possible to the needed component
 3. create component with single responsibility
@@ -23,3 +24,12 @@ learned: separating state related logic in speakersList component to custom hook
 
 Commit number 6 -
 learned: instead of having multiple flags for loading and error we can create single status enum like object 
+
+
+Commit number 7 - updated custom hook make it generic other data
+learned: removed speaker related data out of custom hook and passed down as initial state, 
+1. using spread operator to smartly update the record from recordList  
+
+Commit number 8 - spinner while favorite transaction is happening
+learned:  
+1. passing callback to hide spinners once favorite is toggled  

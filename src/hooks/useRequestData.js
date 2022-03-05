@@ -42,7 +42,7 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
      * used map to create new array with updated state
      * @param {string} speakerID 
      */
-    const updateRecord = function (updatedRecord) {
+    const updateRecord = function (updatedRecord, donCallBack) {
         const tData = data.map(function (res) {
             return res.id === updatedRecord.id ? updatedRecord : res
         })
@@ -50,6 +50,7 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
             console.log('Hello')
             await new Promise((resolve) => setTimeout(resolve, 2000))
             try {
+                donCallBack()
                 setData(tData)
             }
             catch (e) {
