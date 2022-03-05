@@ -20,3 +20,6 @@ learned: Handling loading and error
 Commit number 5 -
 learned: separating state related logic in speakersList component to custom hook useRequestSpeaker
 1. created custom hook which is normal function which starts with 'use'and returns states and other functions
+
+Commit number 6 -
+learned: instead of having multiple flags for loading and error we can create single status enum like object 

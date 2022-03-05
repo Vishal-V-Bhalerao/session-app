@@ -1,8 +1,12 @@
 import Speaker from './Speaker'
 import ReactPlaceholder from 'react-placeholder/lib'
-import useRequestSpeakers, { REQUEST_STATUS } from '../hooks/useRequestSpeakers'
+import useRequestData, { REQUEST_STATUS } from '../hooks/useRequestData'
+import { data } from '../../SpeakerData'
 function SpeakerList({ showSessions }) {
-    const { speakerData, requestStatus, error, updateFavorite } = useRequestSpeakers()
+    // getting states from custom hook
+    // speakerData alias in spread data object
+    const { data: speakerData, requestStatus, error, updateRecord } = useRequestData(2000, data)
+    // error handling
     if (requestStatus === REQUEST_STATUS.FAILURE) {
         return (
             <div className='text-danger' >
@@ -24,7 +28,7 @@ function SpeakerList({ showSessions }) {
                             speaker={speaker}
                             showSessions={showSessions}
                             updateFavorite={
-                                () => updateFavorite(speaker.id)
+                                () => { updateRecord({ ...speaker, favorite: !speaker.favorite }) }
                             }></Speaker>
                     })}
                 </div>

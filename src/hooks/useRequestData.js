@@ -1,4 +1,3 @@
-import { data } from '../../SpeakerData'
 import { useEffect, useState } from 'react'
 
 export const REQUEST_STATUS = {
@@ -7,8 +6,8 @@ export const REQUEST_STATUS = {
     FAILURE: 'failure'
 }
 
-export default function useRequestSpeakers() {
-    const [speakerData, setSpeakerData] = useState([])
+export default function useRequestData(delayTime = 1000, initialData = []) {
+    const [data, setData] = useState(initialData)
     // const [isLoading, setIsLoading] = useState(true)
     // const [isError, setIsError] = useState(false)
     const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING)
@@ -24,18 +23,18 @@ export default function useRequestSpeakers() {
      * 2nd arg [] ensures that use effect only run on first render only
      */
     useEffect(() => {
-        async function getSpeakerData() {
-            await delay(2000)
+        async function getDelayedData() {
+            await delay(delayTime)
             try {
                 setRequestStatus(REQUEST_STATUS.SUCCESS)
-                setSpeakerData(data)
+                setData(data)
             }
             catch (e) {
                 setRequestStatus(REQUEST_STATUS.FAILURE)
                 setError(e)
             }
         }
-        getSpeakerData()
+        getDelayedData()
     }, [])
 
     /**
@@ -43,14 +42,22 @@ export default function useRequestSpeakers() {
      * used map to create new array with updated state
      * @param {string} speakerID 
      */
-    const updateFavorite = function (speakerID) {
-        const tSpeaker = speakerData.find((speaker) => speaker.id === speakerID)
-        tSpeaker = { ...tSpeaker, favorite: !tSpeaker.favorite }
-        const tSpeakerData = speakerData.map(function (speaker) {
-            return speaker.id === speakerID ? tSpeaker : speaker
+    const updateRecord = function (updatedRecord) {
+        const tData = data.map(function (res) {
+            return res.id === updatedRecord.id ? updatedRecord : res
         })
-        setSpeakerData(tSpeakerData)
+        async function delayedUpdate() {
+            console.log('Hello')
+            await new Promise((resolve) => setTimeout(resolve, 2000))
+            try {
+                setData(tData)
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
+        delayedUpdate()
     }
 
-    return { speakerData, requestStatus, error, updateFavorite }
+    return { data, requestStatus, error, updateRecord }
 }
