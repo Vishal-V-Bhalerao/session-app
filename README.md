@@ -33,3 +33,8 @@ learned: removed speaker related data out of custom hook and passed down as init
 Commit number 8 - spinner while favorite transaction is happening
 learned:  
 1. passing callback to hide spinners once favorite is toggled  
+
+Commit number 9 - optimistic UI
+learned:  
+1. updating favorite star UI before the service response, if service failed revert to original state.
+used spread operator to create copy of original state  
