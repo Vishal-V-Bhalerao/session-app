@@ -2,10 +2,10 @@ Demo - https://vishalvb-sessionapp.netlify.app/
 
 Application snapShots -
 Light mode -
-![Alt text](screenshots/lightmode.JPG.?raw=true "Title")
+![Alt text](screenshots/lightmode.JPG?raw=true "Title")
 
 Dark mode -
-![Alt text](screenshots/darkmode.JPG.?raw=true "Title")
+![Alt text](screenshots/darkmode.JPG?raw=true "Title")
 
 
 Commit number 1 -
