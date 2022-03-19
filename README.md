@@ -1,4 +1,6 @@
 Demo - https://vishalvb-sessionapp.netlify.app/
+
+
 Commit number 1 -
 1. if two siblings need common state instead of putting it to the root compo, create new parent compo for them and add state to it
 2. keep state as close as possible to the needed component
