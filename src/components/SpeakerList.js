@@ -28,7 +28,7 @@ function SpeakerList({ showSessions }) {
                             speaker={speaker}
                             showSessions={showSessions}
                             updateFavorite={
-                                (donCallBack) => { updateRecord({ ...speaker, favorite: !speaker.favorite }, donCallBack) }
+                                (doneCallBack) => { updateRecord({ ...speaker, favorite: !speaker.favorite }, doneCallBack) }
                             }></Speaker>
                     })}
                 </div>
