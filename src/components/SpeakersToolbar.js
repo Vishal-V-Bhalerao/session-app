@@ -9,7 +9,7 @@ function SpeakersToolbar({ showSessions, setShowSessions }) {
             <div className="container" >
                 <div className="justify-content-between" >
                     <ul className="toolrow d-flex flex-column flex-lg-row">
-                        <li className="d-flex flex-column flex-md-row">
+                        <li className="d-flex flex-column flex-md-row align-items-center">
                             <b>Show Sessions &nbsp; &nbsp;</b>
                             <label className="fav" >
                                 <input

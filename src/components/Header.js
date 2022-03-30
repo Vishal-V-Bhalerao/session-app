@@ -13,7 +13,9 @@ function Header() {
                             src="./images/SVCCLogo.png"
                         />
                     </div>
-                    <div className="light" >
+                    <div className={
+                        theme === "light" ? "" : "text-info"
+                    }>
                         <h4 className="header-title" >
                             Silicon Valley Code Camp
                         </h4>
