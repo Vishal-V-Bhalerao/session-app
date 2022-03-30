@@ -55,11 +55,9 @@ learned:
 2. Use ThemeContext to wrap around components who needs data and set value to pass.
 3. use useContext to receive value in context
 
-Commit number 10 - Context API
+Commit number 10 - Layout Component for handling all theme related changes -  for single responsibility
 learned:  
-1. using CreateCOntext for creating ThemeContext
-2. Use ThemeContext to wrap around components who needs data and set value to pass.
-3. use useContext to receive value in context
+1.
 
 
 
