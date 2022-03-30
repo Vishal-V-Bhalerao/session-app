@@ -48,3 +48,19 @@ Commit number 9 - optimistic UI
 learned:  
 1. updating favorite star UI before the service response, if service failed revert to original state.
 used spread operator to create copy of original state  
+--------------------- Context API -----------------
+Commit number 10 - Context API
+learned:  
+1. using CreateCOntext for creating ThemeContext
+2. Use ThemeContext to wrap around components who needs data and set value to pass.
+3. use useContext to receive value in context
+
+Commit number 10 - Context API
+learned:  
+1. using CreateCOntext for creating ThemeContext
+2. Use ThemeContext to wrap around components who needs data and set value to pass.
+3. use useContext to receive value in context
+
+
+
+
