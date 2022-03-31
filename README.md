@@ -57,7 +57,9 @@ learned:
 
 Commit number 10 - Layout Component for handling all theme related changes -  for single responsibility
 learned:  
-1.
+
+Commit number 11 - Creating separate context folder and creating separate component for making referencing easier
+
 
 
 
