@@ -86,7 +86,7 @@ function Speaker({ speaker, updateFavorite }) {
     // card-height
     return (
         <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
-            <div className='card  p-4 mt-4' >
+            <div className='card  p-4 mt-4 card-shadow' >
                 <SpeakerImage id={id} first={first} last={last}></SpeakerImage>
                 <SpeakerInfo {...speaker} updateFavorite={updateFavorite}></SpeakerInfo>
                 {showSession ? <SessionList sessions={sessions} ></SessionList> : null}

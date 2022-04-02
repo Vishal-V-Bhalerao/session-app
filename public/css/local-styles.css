@@ -780,6 +780,10 @@ input:checked+.switch:before {
     overflow: hidden !important;
 }
 
+.card-shadow {
+    box-shadow: -1px 3px 7px 0px lightgrey;
+}
+
 .show-fav .speakers-list {
     padding: 0 15px 0 0px;
 }
@@ -812,6 +816,10 @@ input:checked+.switch:before {
 
 .second-order {
     order: 1;
+}
+
+.banner {
+    min-height: 300px;
 }
 
 @media only screen and (max-width: 1024px) {
