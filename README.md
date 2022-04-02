@@ -28,7 +28,7 @@ learned: Handling loading and error
 1. handled loading and error by creating their flag states
 2. added react-placeholder lib to show loading screen
 
-Commit number 5 -
+Commit number 5 - custom react hooks are used for handling multiple states in single component 
 learned: separating state related logic in speakersList component to custom hook useRequestSpeaker
 1. created custom hook which is normal function which starts with 'use'and returns states and other functions
 
@@ -55,10 +55,14 @@ learned:
 2. Use ThemeContext to wrap around components who needs data and set value to pass.
 3. use useContext to receive value in context
 
-Commit number 10 - Layout Component for handling all theme related changes -  for single responsibility
+Commit number 10 #refactor - Layout Component for handling all theme related changes -  for single responsibility
 learned:  
 
-Commit number 11 - Creating separate context folder and creating separate component for making referencing easier
+
+Commit number 11 #refactor - Creating separate context folder and creating separate component for making referencing easier
+Undefined context error will come when we try to use useContext before the rendering component that creates context 
+
+Commit number 12 #refactor - Created separate custom Hook for theme
 
 
 

@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { speakerFilterContext } from '../context/SpeakerFilterContext'
 
 function Session({ title, room }) {
     return (
@@ -10,10 +11,13 @@ function Session({ title, room }) {
 
 function SessionList({ sessions }) {
     //h-250
+    const { eventYear } = useContext(speakerFilterContext)
     return (
-        <div className='sessionBox card custom-session-list-margin'>
-            <Session {...sessions[0]}
-            ></Session>
+        <div className='sessionBox card custom-session-list-margin h-250'>
+            {sessions
+                .filter(session => session.eventYear === eventYear)
+                .map(session => <Session key={session.id} {...session} ></Session>)
+            }
         </div>
     )
 }
@@ -76,15 +80,16 @@ function SpeakerInfo({ first, last, bio, company, twitterHandle, favorite, updat
     )
 }
 
-function Speaker({ speaker, showSessions, updateFavorite }) {
+function Speaker({ speaker, updateFavorite }) {
     const { id, first, last, sessions } = speaker;
+    const { showSession } = useContext(speakerFilterContext)
     // card-height
     return (
         <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
             <div className='card  p-4 mt-4' >
                 <SpeakerImage id={id} first={first} last={last}></SpeakerImage>
                 <SpeakerInfo {...speaker} updateFavorite={updateFavorite}></SpeakerInfo>
-                {showSessions ? <SessionList sessions={sessions} ></SessionList> : null}
+                {showSession ? <SessionList sessions={sessions} ></SessionList> : null}
             </div>
         </div>
     )

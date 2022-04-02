@@ -1,8 +1,18 @@
 
 import { useContext } from "react"
 import { themeContext } from "./../context/ThemeContext"
-function SpeakersToolbar({ showSessions, setShowSessions }) {
+import { speakerFilterContext } from '../context/SpeakerFilterContext'
+function SpeakersToolbar() {
     // getting themContext using useContext hook
+    const {
+        showSession,
+        setShowSession,
+        eventYear,
+        setEventYear,
+        searchText,
+        setSearchText,
+        EVENT_YEAR
+    } = useContext(speakerFilterContext)
     const { theme, setTheme } = useContext(themeContext)
     return (
         <section className="toolbar dark-theme-header" >
@@ -15,10 +25,10 @@ function SpeakersToolbar({ showSessions, setShowSessions }) {
                                 <input
                                     onChange={(event) => {
                                         console.log(event.target.checked)
-                                        setShowSessions(event.target.checked)
+                                        setShowSession(event.target.checked)
                                     }}
                                     type="checkbox"
-                                    checked={showSessions}
+                                    checked={showSession}
                                 ></input>
                                 <span className="switch" ></span>
                             </label>
@@ -35,6 +45,32 @@ function SpeakersToolbar({ showSessions, setShowSessions }) {
                                 >
                                     <option value="light">Light</option>
                                     <option value="dark" >Dark</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li className="d-flex flex-column flex-md-row" >
+                            <div className="input-group">
+                                <input type="text" className="form-control" value={searchText} placeholder="Search..."
+                                    onChange={(event) => {
+                                        setSearchText(event.target.value)
+                                    }}
+                                />
+                                <button className="btn btn-secondary" type="button">
+                                    <i className="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </li>
+                        <li className="d-flex flex-column flex-md-row" >
+                            <strong>Year</strong>
+                            <label className="dropmenu" >
+                                <select className="form-control" value={eventYear}
+                                    onChange={({ currentTarget }) => {
+                                        console.log('year :', currentTarget.value)
+                                        setEventYear(currentTarget.value)
+                                    }}>
+                                    {
+                                        EVENT_YEAR.map((year) => <option value={year} key={year}>{year}</option>)
+                                    }
                                 </select>
                             </label>
                         </li>
