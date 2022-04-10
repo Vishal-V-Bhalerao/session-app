@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import { speakerFilterContext } from '../context/SpeakerFilterContext'
-
+import { speakerContext, SpeakerContextProvider } from '../context/SpeakerContext'
 function Session({ title, room }) {
     return (
         <span className='session w-100'>
@@ -9,20 +9,22 @@ function Session({ title, room }) {
     )
 }
 
-function SessionList({ sessions }) {
+function SessionList() {
     //h-250
+    const { speaker: { sessions } } = useContext(speakerContext)
     const { eventYear } = useContext(speakerFilterContext)
     return (
         <div className='sessionBox card custom-session-list-margin h-250'>
             {sessions
                 .filter(session => session.eventYear === eventYear)
-                .map(session => <Session key={session.id} {...session} ></Session>)
+                .map(session => <Session {...session} key={session.id}></Session>)
             }
         </div>
     )
 }
 
-function SpeakerImage({ id, first, last }) {
+function SpeakerImage() {
+    const { speaker: { id, first, last } } = useContext(speakerContext)
     return (
         <div className='speaker-img d-flex flex-row justify-content-center align-items-center h-300' >
             <img className='contain-fit'
@@ -35,7 +37,8 @@ function SpeakerImage({ id, first, last }) {
     )
 }
 
-function SpeakerFavorite({ favorite, updateFavorite }) {
+function SpeakerFavorite() {
+    const { speaker, updateRecord } = useContext(speakerContext)
     const [inTransition, setInTransition] = useState(false)
     const donCallBack = () => {
         setInTransition(false)
@@ -44,9 +47,9 @@ function SpeakerFavorite({ favorite, updateFavorite }) {
         <div className="action padB1" >
             <span onClick={() => {
                 setInTransition(true)
-                updateFavorite(donCallBack)
+                updateRecord({ ...speaker, favorite: !speaker.favorite }, donCallBack)
             }} >
-                <i className={favorite === true ? 'fa fa-star orange' : 'fa fa-star-o orange'}></i>
+                <i className={speaker.favorite === true ? 'fa fa-star orange' : 'fa fa-star-o orange'}></i>
                 {' '} Favorite {' '}
                 {inTransition ? <span className="fas fa-circle-notch fa-spin" ></span> : null}
             </span>
@@ -54,7 +57,8 @@ function SpeakerFavorite({ favorite, updateFavorite }) {
     )
 }
 
-function SpeakerInfo({ first, last, bio, company, twitterHandle, favorite, updateFavorite }) {
+function SpeakerInfo() {
+    const { speaker: { first, last, bio, company, twitterHandle, favorite } } = useContext(speakerContext)
     return (
         <div className='speaker-info' >
             <div className='d-flex justify-content-between mb-3'>
@@ -62,7 +66,7 @@ function SpeakerInfo({ first, last, bio, company, twitterHandle, favorite, updat
                     {first} {last}
                 </h3>
             </div>
-            <SpeakerFavorite favorite={favorite} updateFavorite={updateFavorite}></SpeakerFavorite>
+            <SpeakerFavorite favorite={favorite}></SpeakerFavorite>
             <div>
                 <p className="card-description">{bio}</p>
                 <div className="social d-flex flex-row mt-4" >
@@ -80,18 +84,19 @@ function SpeakerInfo({ first, last, bio, company, twitterHandle, favorite, updat
     )
 }
 
-function Speaker({ speaker, updateFavorite }) {
-    const { id, first, last, sessions } = speaker;
+function Speaker({ speaker, updateRecord }) {
     const { showSession } = useContext(speakerFilterContext)
     // card-height
     return (
-        <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
-            <div className='card  p-4 mt-4 card-shadow' >
-                <SpeakerImage id={id} first={first} last={last}></SpeakerImage>
-                <SpeakerInfo {...speaker} updateFavorite={updateFavorite}></SpeakerInfo>
-                {showSession ? <SessionList sessions={sessions} ></SessionList> : null}
+        <SpeakerContextProvider speaker={speaker} updateRecord={updateRecord}>
+            <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
+                <div className='card  p-4 mt-4 card-shadow' >
+                    <SpeakerImage ></SpeakerImage>
+                    <SpeakerInfo ></SpeakerInfo>
+                    {showSession ? <SessionList ></SessionList> : null}
+                </div>
             </div>
-        </div>
+        </SpeakerContextProvider>
     )
 }
 

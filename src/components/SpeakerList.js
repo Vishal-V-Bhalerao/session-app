@@ -38,9 +38,7 @@ function SpeakerList() {
                         .map(function (speaker) {
                             return <Speaker key={speaker.id}
                                 speaker={speaker}
-                                updateFavorite={
-                                    (doneCallBack) => { updateRecord({ ...speaker, favorite: !speaker.favorite }, doneCallBack) }
-                                }></Speaker>
+                                updateRecord={updateRecord}></Speaker>
                         })}
                 </div>
             </ReactPlaceholder>

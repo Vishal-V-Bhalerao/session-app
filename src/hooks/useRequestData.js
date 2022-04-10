@@ -67,5 +67,61 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
         delayedUpdate()
     }
 
+    /**
+ * Insert new speaker in catalog
+ * used map to create new array with updated state
+ * @param {string} speakerID 
+ */
+    const insertRecord = function (insertedRecord, donCallBack) {
+        const originalData = [...data]
+        const tData = [insertRecord, ...data]
+        // async delay function to simulate service call
+        async function delayedUpdate() {
+            try {
+                setData(tData)
+                await new Promise((resolve) => setTimeout(resolve, 2000))
+                if (donCallBack) {
+                    donCallBack()
+                }
+            }
+            catch (e) {
+                setData(originalData)
+                if (donCallBack) {
+                    donCallBack()
+                }
+                console.log(e)
+            }
+        }
+        delayedUpdate()
+    }
+    /**
+* delete speaker record from list
+* used map to create new array with updated state
+* @param {string} speakerID 
+*/
+    const deleteRecord = function (deletedRecord, donCallBack) {
+        const originalData = [...data]
+        const tData = data.filter(function (res) {
+            return res.id !== deletedRecord.id
+        })
+        // async delay function to simulate service call
+        async function delayedUpdate() {
+            try {
+                setData(tData)
+                await new Promise((resolve) => setTimeout(resolve, 2000))
+                if (donCallBack) {
+                    donCallBack()
+                }
+            }
+            catch (e) {
+                setData(originalData)
+                if (donCallBack) {
+                    donCallBack()
+                }
+                console.log(e)
+            }
+        }
+        delayedUpdate()
+    }
     return { data, requestStatus, error, updateRecord }
 }

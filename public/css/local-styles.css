@@ -819,7 +819,7 @@ input:checked+.switch:before {
 }
 
 .banner {
-    min-height: 300px;
+    min-height: 400px;
 }
 
 @media only screen and (max-width: 1024px) {
