@@ -3,11 +3,26 @@ import { Modal, Button, Form } from "react-bootstrap"
 
 export function AddSpeaker({ insertRecord }) {
     const [show, setShow] = useState(false);
-
+    const formData = {};
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const handleSubmit = (speakerData) => {
-        console.log(speakerData.currentTarget)
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(formData)
+        // Temporary hardcoded
+        const speakerData = {
+            ...formData, sessions: [
+                {
+                    id: "1011",
+                    title: "Decomposing applications for scalability and deployability",
+                    eventYear: '2019',
+                    room: {
+                        name: "4306",
+                        capacity: 100,
+                    },
+                }
+            ],
+        }
         insertRecord(speakerData, handleClose)
     }
     return (
@@ -24,21 +39,21 @@ export function AddSpeaker({ insertRecord }) {
                     <Modal.Body>
                         <Form.Group className="mb-3" controlId="fistName">
                             <Form.Label>First Name</Form.Label>
-                            <Form.Control type="text" placeholder="add first name" />
+                            <Form.Control type="text" placeholder="add first name" onChange={(e) => formData['first'] = e.target.value} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="lastName">
                             <Form.Label>First Name</Form.Label>
-                            <Form.Control type="text" placeholder="add last name" />
+                            <Form.Control type="text" placeholder="add last name" onChange={(e) => formData['last'] = e.target.value} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="organization">
                             <Form.Label>Organization Name</Form.Label>
-                            <Form.Control type="text" placeholder="add organization" />
+                            <Form.Control type="text" placeholder="add organization" onChange={(e) => formData['company'] = e.target.value} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="date">
                             <Form.Label>Session Date</Form.Label>
-                            <Form.Control type="date" placeholder="date" />
+                            <Form.Control type="date" placeholder="date" onChange={(e) => formData['sessionYear'] = e.target.value} />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="bio">
+                        <Form.Group className="mb-3" controlId="bio" onChange={(e) => formData['bio'] = e.target.value}>
                             <Form.Label>Bio </Form.Label>
                             <Form.Control as="textarea" rows={5} />
                         </Form.Group>

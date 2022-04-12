@@ -6,7 +6,7 @@ export function DeleteSpeaker() {
     const { speaker, deleteRecord } = useContext(speakerContext)
 
     return (
-        <Button className="session w-100 delete-bar">
+        <Button className="session w-100 delete-bar" onClick={() => deleteRecord(speaker)}>
             <span className="padL2" >Delete Speaker</span>
         </Button>
         // <span className="session w-100 delete-bar">

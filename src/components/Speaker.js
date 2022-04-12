@@ -85,11 +85,11 @@ function SpeakerInfo() {
     )
 }
 
-function Speaker({ speaker, updateRecord }) {
+function Speaker({ speaker, updateRecord, deleteRecord }) {
     const { showSession } = useContext(speakerFilterContext)
     // card-height
     return (
-        <SpeakerContextProvider speaker={speaker} updateRecord={updateRecord}>
+        <SpeakerContextProvider speaker={speaker} updateRecord={updateRecord} deleteRecord={deleteRecord} >
             <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
                 <div className='card  p-4 mt-4 card-shadow' >
                     <SpeakerImage ></SpeakerImage>

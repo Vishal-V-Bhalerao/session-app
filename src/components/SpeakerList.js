@@ -41,7 +41,7 @@ function SpeakerList() {
                         .map(function (speaker) {
                             return <Speaker key={speaker.id}
                                 speaker={speaker}
-                                updateRecord={updateRecord}></Speaker>
+                                updateRecord={updateRecord} deleteRecord={deleteRecord} ></Speaker>
                         })}
                 </div>
             </ReactPlaceholder>

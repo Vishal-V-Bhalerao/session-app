@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
 const speakerContext = createContext()
-function SpeakerContextProvider({ speaker, updateRecord, children }) {
+function SpeakerContextProvider({ speaker, updateRecord, deleteRecord, children }) {
     return (
         <speakerContext.Provider
             value={{
-                speaker, updateRecord
+                speaker, updateRecord, deleteRecord
             }}
         >
             {children}
