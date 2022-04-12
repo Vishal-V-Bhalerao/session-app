@@ -72,9 +72,9 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
  * used map to create new array with updated state
  * @param {string} speakerID 
  */
-    const insertRecord = function (insertedRecord, donCallBack) {
+    const insertRecord = function (addedRecord, donCallBack) {
         const originalData = [...data]
-        const tData = [insertRecord, ...data]
+        const tData = [addedRecord, ...data]
         // async delay function to simulate service call
         async function delayedUpdate() {
             try {
@@ -123,5 +123,5 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
         }
         delayedUpdate()
     }
-    return { data, requestStatus, error, updateRecord }
+    return { data, requestStatus, error, updateRecord, insertRecord, deleteRecord }
 }

@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { speakerFilterContext } from '../context/SpeakerFilterContext'
 import { speakerContext, SpeakerContextProvider } from '../context/SpeakerContext'
+import { DeleteSpeaker } from './deleteSpeaker'
 function Session({ title, room }) {
     return (
         <span className='session w-100'>
@@ -95,6 +96,7 @@ function Speaker({ speaker, updateRecord }) {
                     <SpeakerInfo ></SpeakerInfo>
                     {showSession ? <SessionList ></SessionList> : null}
                 </div>
+                <DeleteSpeaker></DeleteSpeaker>
             </div>
         </SpeakerContextProvider>
     )

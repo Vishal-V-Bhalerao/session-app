@@ -4,12 +4,14 @@ import { useContext } from "react"
 import { speakerFilterContext } from '../context/SpeakerFilterContext'
 import useRequestData, { REQUEST_STATUS } from '../hooks/useRequestData'
 import { data } from '../../SpeakerData'
+import { AddSpeaker } from '../components/AddSpeaker'
+
 function SpeakerList() {
 
     const { searchText, eventYear } = useContext(speakerFilterContext)
     // getting states from custom hook
     // speakerData alias in spread data object
-    const { data: speakerData, requestStatus, error, updateRecord } = useRequestData(2000, data)
+    const { data: speakerData, requestStatus, error, updateRecord, insertRecord, deleteRecord } = useRequestData(2000, data)
     // error handling
     if (requestStatus === REQUEST_STATUS.FAILURE) {
         return (
@@ -26,6 +28,7 @@ function SpeakerList() {
                 className="speakerslist-placeholder"
                 ready={requestStatus === REQUEST_STATUS.SUCCESS}
             >
+                <AddSpeaker insertRecord={insertRecord}></AddSpeaker>
                 <div className='row' >
                     {speakerData
                         .filter((speaker) => {
