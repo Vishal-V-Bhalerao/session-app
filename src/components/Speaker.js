@@ -24,16 +24,30 @@ function SessionList() {
     )
 }
 
+function ImageWithFallBack({ src, ...props }) {
+    const [error, setError] = useState(false);
+    const [imgSrc, setImgSrc] = useState(src);
+    function onError() {
+        if (!error) {
+            setImgSrc("/images/speaker-99999.jpg")
+            setError(true)
+        }
+    }
+
+    return <img src={imgSrc} {...props} onError={onError} />
+
+}
+
 function SpeakerImage() {
     const { speaker: { id, first, last } } = useContext(speakerContext)
     return (
         <div className='speaker-img d-flex flex-row justify-content-center align-items-center h-300' >
-            <img className='contain-fit'
+            <ImageWithFallBack className='contain-fit'
                 src={`/images/speaker-${id}.jpg`}
                 width="300"
                 alt={`${first} ${last}`}
             >
-            </img>
+            </ImageWithFallBack>
         </div>
     )
 }
@@ -87,11 +101,11 @@ function SpeakerInfo() {
 
 function Speaker({ speaker, updateRecord, deleteRecord }) {
     const { showSession } = useContext(speakerFilterContext)
-    // card-height
+    // card-height card-shadow
     return (
         <SpeakerContextProvider speaker={speaker} updateRecord={updateRecord} deleteRecord={deleteRecord} >
             <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
-                <div className='card  p-4 mt-4 card-shadow' >
+                <div className='card  p-4 mt-4' >
                     <SpeakerImage ></SpeakerImage>
                     <SpeakerInfo ></SpeakerInfo>
                     {showSession ? <SessionList ></SessionList> : null}
