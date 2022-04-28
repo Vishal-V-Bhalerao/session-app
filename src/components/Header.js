@@ -10,7 +10,7 @@ function Header() {
                 <div className="d-flex justify-content-between" >
                     <div>
                         <img alt="SVCC Home Page"
-                            src="./images/SVCCLogo.png"
+                            src="/images/SVCCLogo.png"
                         />
                     </div>
                     <div className={
