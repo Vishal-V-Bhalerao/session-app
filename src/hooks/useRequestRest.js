@@ -117,7 +117,7 @@ export default function useRequestRest() {
             try {
                 setData(tData)
                 // constructing URl and passing data in put body
-                await axios.delete(`${restUrl}/${updatedRecord.id}`, deletedRecord)
+                await axios.delete(`${restUrl}/${deletedRecord.id}`, deletedRecord)
                 if (donCallBack) {
                     donCallBack()
                 }

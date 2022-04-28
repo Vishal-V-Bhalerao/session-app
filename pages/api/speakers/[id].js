@@ -92,7 +92,7 @@ export default async function handler(req, res) {
             const speakers = JSON.parse(readFileData).speakers;
             if (speakers) {
                 // *************** delete logic *************
-                const newSpeakersArray = speakers.map(function (speakerData) {
+                const newSpeakersArray = speakers.filter(function (speakerData) {
                     return speakerData.id !== id
                 })
                 writeFile(jsonFile, JSON.stringify({ speakers: newSpeakersArray }, null, 2))
