@@ -485,6 +485,7 @@ input:checked+.switch:before {
 }
 
 .speaker-info p {
+    min-height: 60px;
     font-size: 15px;
     font-weight: 400;
     color: #7a7a7a;
@@ -617,6 +618,17 @@ input:checked+.switch:before {
 }
 
 .session {
+    background: #edecec;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    font-size: 14px;
+    color: #6d6d6d;
+    margin: 5px 5px;
+    min-height: 85px;
+}
+
+.session-button {
     background: #edecec;
     border-radius: 5px;
     padding: 10px;
