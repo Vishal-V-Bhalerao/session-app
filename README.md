@@ -1,4 +1,4 @@
-Demo - https://vishalvb-sessionapp.netlify.app/
+Demo - https://session-app.vercel.app//
 
 This is Demo application for Code Camp, which displays catalog of speaker and their sessions
 in cards view. developed using NextJs
