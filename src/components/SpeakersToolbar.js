@@ -31,7 +31,7 @@ function SpeakersToolbar() {
                                     type="checkbox"
                                     checked={showSession}
                                 ></input>
-                                <span className="switch" ></span>
+                                <span className={theme == 'dark' ? 'dark-primary switch' : 'switch'}></span>
                             </label>
                         </li>
                         <li className="d-flex flex-column flex-md-row ml-sm-5 ml-0" >

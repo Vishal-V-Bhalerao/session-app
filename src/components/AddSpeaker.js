@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap"
+import { themeContext } from "../context/ThemeContext";
 // component handles add operation of new speaker, contains add button and modal component 
 export function AddSpeaker({ insertRecord }) {
     const [show, setShow] = useState(false);
+    const { theme } = useContext(themeContext)
     const formData = {};
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -27,7 +29,7 @@ export function AddSpeaker({ insertRecord }) {
     }
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button className={theme == 'dark' ? 'dark-primary' : ''} variant="primary" onClick={handleShow}>
                 Add Speaker
             </Button>
 

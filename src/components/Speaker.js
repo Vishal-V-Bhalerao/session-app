@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { speakerFilterContext } from '../context/SpeakerFilterContext'
 import { speakerContext, SpeakerContextProvider } from '../context/SpeakerContext'
 import { DeleteSpeaker } from './deleteSpeaker'
+import { themeContext } from "../context/ThemeContext"
 function Session({ title, room }) {
     return (
         <span className='session w-100'>
@@ -100,10 +101,11 @@ function SpeakerInfo() {
 // main card component for speaker
 function Speaker({ speaker, updateRecord, deleteRecord }) {
     const { showSession } = useContext(speakerFilterContext)
+    const { theme } = useContext(themeContext)
     return (
         <SpeakerContextProvider speaker={speaker} updateRecord={updateRecord} deleteRecord={deleteRecord} >
             <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
-                <div className='card  p-4 mt-4' >
+                <div className={theme === 'dark' ? "card card-theme p-4 mt-4" : "card p-4 mt-4"} >
                     <SpeakerImage ></SpeakerImage>
                     <SpeakerInfo ></SpeakerInfo>
                     {showSession ? <SessionList ></SessionList> : null}
