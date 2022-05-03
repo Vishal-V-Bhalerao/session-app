@@ -65,7 +65,7 @@ export default function useRequestRest() {
                 }
             }
             catch (e) {
-                setData(originalData)
+                // setData(originalData)
                 if (donCallBack) {
                     donCallBack()
                 }
@@ -95,7 +95,7 @@ export default function useRequestRest() {
                 }
             }
             catch (e) {
-                setData(originalData)
+                // setData(originalData)
                 if (donCallBack) {
                     donCallBack()
                 }
@@ -126,7 +126,7 @@ export default function useRequestRest() {
                 }
             }
             catch (e) {
-                setData(originalData)
+                // setData(originalData)
                 if (donCallBack) {
                     donCallBack()
                 }
