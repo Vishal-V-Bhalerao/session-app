@@ -45,7 +45,8 @@ export default function useRequestRest() {
     /**
      * changing favorite flag for speaker with passed ID
      * used map to create new array with updated state
-     * @param {string} speakerID 
+     * @param {object} updatedRecord - updated record object
+     * @param {function} donCallBack -success callback function
      */
     const updateRecord = function (updatedRecord, donCallBack) {
         const originalData = [...data]
@@ -77,7 +78,8 @@ export default function useRequestRest() {
     /**
  * Insert new speaker in catalog
  * used map to create new array with updated state
- * @param {string} speakerID 
+ * @param {object} addedRecord - new record object
+ * @param {function} donCallBack -success callback function
  */
     const insertRecord = function (addedRecord, donCallBack) {
         const originalData = [...data]
@@ -105,7 +107,8 @@ export default function useRequestRest() {
     /**
 * delete speaker record from list
 * used map to create new array with updated state
-* @param {string} speakerID 
+* @param {object} deletedRecord -record object to be deleted
+* @param {function} donCallBack -success callback function
 */
     const deleteRecord = function (deletedRecord, donCallBack) {
         const originalData = [...data]

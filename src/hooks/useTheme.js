@@ -1,4 +1,5 @@
 import { useState } from 'react'
+// custom hook for theme operation
 export function useTheme(startTheme) {
     const [theme, setTheme] = useState(startTheme)
     function validateAndSetTheme(value) {

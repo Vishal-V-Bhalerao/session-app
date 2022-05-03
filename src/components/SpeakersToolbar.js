@@ -2,6 +2,7 @@
 import { useContext } from "react"
 import { themeContext } from "./../context/ThemeContext"
 import { speakerFilterContext } from '../context/SpeakerFilterContext'
+// component contains all filtering options for speaker list
 function SpeakersToolbar() {
     // getting themContext using useContext hook
     const {

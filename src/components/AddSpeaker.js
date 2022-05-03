@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap"
-
+// component handles add operation of new speaker, contains add button and modal component 
 export function AddSpeaker({ insertRecord }) {
     const [show, setShow] = useState(false);
     const formData = {};

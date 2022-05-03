@@ -1,6 +1,7 @@
 import { createContext } from "react"
 import { useSpeakerFilter } from "../hooks/useSpeakerFilter"
 export const speakerFilterContext = createContext()
+// context for all speaker list filtering operations
 export function SpeakerFilterProvider({ initialSessionState, initialEventYear, children }) {
     const {
         showSession,

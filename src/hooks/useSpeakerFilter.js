@@ -1,7 +1,6 @@
 import { useState } from "react";
-
+// custom hook for handling all filtering operation on speaker list
 export function useSpeakerFilter(initialSessionState, initialEventYear) {
-
     const [showSession, setShowSession] = useState(initialSessionState)
     const [eventYear, setEventYear] = useState(initialEventYear)
     const [searchText, setSearchText] = useState('')

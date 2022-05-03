@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { themeContext } from "./../context/ThemeContext"
-
+// contains website logo, name and login
 function Header() {
 
     const { theme } = useContext(themeContext)

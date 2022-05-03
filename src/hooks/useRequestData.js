@@ -8,8 +8,6 @@ export const REQUEST_STATUS = {
 
 export default function useRequestData(delayTime = 1000, initialData = []) {
     const [data, setData] = useState(initialData)
-    // const [isLoading, setIsLoading] = useState(true)
-    // const [isError, setIsError] = useState(false)
     const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING)
     const [error, setError] = useState('')
     /**
@@ -40,7 +38,8 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
     /**
      * changing favorite flag for speaker with passed ID
      * used map to create new array with updated state
-     * @param {string} speakerID 
+     * @param {object} updatedRecord - updated record
+     * @param {function} donCallBack -success callback function
      */
     const updateRecord = function (updatedRecord, donCallBack) {
         const originalData = [...data]
@@ -70,7 +69,8 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
     /**
  * Insert new speaker in catalog
  * used map to create new array with updated state
- * @param {string} speakerID 
+ * @param {object} addedRecord - new record object
+ * @param {function} donCallBack -success callback function
  */
     const insertRecord = function (addedRecord, donCallBack) {
         const originalData = [...data]
@@ -97,7 +97,8 @@ export default function useRequestData(delayTime = 1000, initialData = []) {
     /**
 * delete speaker record from list
 * used map to create new array with updated state
-* @param {string} speakerID 
+* @param {object} deletedRecord - record object to be deleted
+* @param {function} donCallBack -success callback function
 */
     const deleteRecord = function (deletedRecord, donCallBack) {
         const originalData = [...data]

@@ -6,6 +6,7 @@ import useRequestRest, { REQUEST_STATUS } from '../hooks/useRequestRest'
 import { data } from '../../SpeakerData'
 import { AddSpeaker } from '../components/AddSpeaker'
 
+// parent component which holds all the speaker cards 
 function SpeakerList() {
 
     const { searchText, eventYear } = useContext(speakerFilterContext)

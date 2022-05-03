@@ -1,24 +1,12 @@
 import { useContext } from "react";
 import { speakerContext } from "../context/SpeakerContext";
 import { Button } from "react-bootstrap";
-
+// component handles delete operation of speaker, 
 export function DeleteSpeaker() {
     const { speaker, deleteRecord } = useContext(speakerContext)
-
     return (
         <Button className="session-button w-100 delete-bar" variant="outline-secondary" onClick={() => deleteRecord(speaker)}>
             <span className="padL2" >Delete Speaker</span>
         </Button>
-        // <span className="session w-100 delete-bar">
-        //     <a href="#" className="remSes" >
-        //         <i onClick={(e) => {
-        //             e.preventDefault();
-        //             deleteRecord(speaker);
-        //         }} >
-        //             ...
-        //         </i>
-        //     </a>
-        //     <span className="padL2" >Delete Speaker</span>
-        // </span>
     )
 }

@@ -9,9 +9,8 @@ function Session({ title, room }) {
         </span>
     )
 }
-
+// component is container for all session component in speaker card
 function SessionList() {
-    //h-250
     const { speaker: { sessions } } = useContext(speakerContext)
     const { eventYear } = useContext(speakerFilterContext)
     return (
@@ -23,7 +22,7 @@ function SessionList() {
         </div>
     )
 }
-
+// component for rendering image. will show default image if image url does not work
 function ImageWithFallBack({ src, ...props }) {
     const [error, setError] = useState(false);
     const [imgSrc, setImgSrc] = useState(src);
@@ -37,7 +36,7 @@ function ImageWithFallBack({ src, ...props }) {
     return <img src={imgSrc} {...props} onError={onError} />
 
 }
-
+// component is container for speaker image
 function SpeakerImage() {
     const { speaker: { id, first, last } } = useContext(speakerContext)
     return (
@@ -51,7 +50,7 @@ function SpeakerImage() {
         </div>
     )
 }
-
+// component for star icon, handles making speaker favorite or removing it
 function SpeakerFavorite() {
     const { speaker, updateRecord } = useContext(speakerContext)
     const [inTransition, setInTransition] = useState(false)
@@ -71,7 +70,7 @@ function SpeakerFavorite() {
         </div>
     )
 }
-
+// component for displaying speaker data name, bio, company etc
 function SpeakerInfo() {
     const { speaker: { first, last, bio, company, twitterHandle, favorite } } = useContext(speakerContext)
     return (
@@ -98,10 +97,9 @@ function SpeakerInfo() {
         </div>
     )
 }
-
+// main card component for speaker
 function Speaker({ speaker, updateRecord, deleteRecord }) {
     const { showSession } = useContext(speakerFilterContext)
-    // card-height card-shadow
     return (
         <SpeakerContextProvider speaker={speaker} updateRecord={updateRecord} deleteRecord={deleteRecord} >
             <div className='col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xs-12' >
